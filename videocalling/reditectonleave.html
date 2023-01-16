@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+</body>
+<script>
+    window.location.href='../home/index.html'
+    url='https://himank.pythonanywhere.com/call/Call_ongoing/0'
+            fetch(url)
+            .then(response => {
+              if (!response.ok) {
+                throw new Error('HTTP error, status = ' + response.status);
+              }
+              return response.json();
+            })
+          .then(data => {
+              console.log(data);
+              // do something with the data here
+            })
+            .catch(error => {
+              console.log(error);
+            });
+            console.log("bhagg")
+</script>
+</html>

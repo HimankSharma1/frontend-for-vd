@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body> <p></p><button onclick="pickupcall()">accept</button></body>
+
+  <script>
+    var audio = new Audio('incomming_call.mp3');
+    function pickupcall(){
+      url='https://himank.pythonanywhere.com/call/Call_ongoing/1'
+      fetch(url)
+      .then(response => {
+        if (!response.ok) {
+          throw new Error('HTTP error, status = ' + response.status);
+        }
+        return response.json();
+      })
+      .then(data => {
+        console.log(data);
+        document.querySelector("body").innerHTML = "";
+        start_call()
+              // do something with the data here
+            })
+            .catch(error => {
+              console.log(error);
+            });
+    }
+function changecallstateto(n){
+  url='https://himank.pythonanywhere.com/call/'+n
+            fetch(url)
+            .then(response => {
+              if (!response.ok) {
+                throw new Error('HTTP error, status = ' + response.status);
+              }
+              return response.json();
+            })
+          .then(data => {
+              console.log(data);
+              // do something with the data here
+            })
+            .catch(error => {
+              console.log(error);
+            });
+}
+    var callAudio = 0;
+    var i = 1; //  set your counter to 1
+    function pollforcall() {
+      url = "https://himank.pythonanywhere.com/call/state";
+      fetch(url)
+        .then((response) => {
+          if (!response.ok) {
+            throw new Error("HTTP error, status = " + response.status);
+          }
+          return response.json();
+        })
+        .then((data) => {
+          if (data == 0) {
+            i=1;
+            document.querySelector("p").innerHTML = "waiting for a call";
+          }
+           else if (data == 1) {
+            if(i<12){
+              i++;
+              if (callAudio==0){
+              audio.play()
+              }
+              document.querySelector("p").innerHTML = "incoming call";
+            }
+            else{
+              changecallstateto(0)
+              callAudio=0
+            document.querySelector("p").innerHTML = "waiting for a call";
+            }
+          }
+          // do something with the data here
+        })
+        .catch((error) => {
+          console.log(error);
+        });
+    }
+    function myLoop() {
+      setTimeout(function () {
+        pollforcall();
+        // i++;
+        myLoop();
+      }, 1000);
+    }
+
+    myLoop();
+
+    function start_call() {
+      var script = document.createElement("script");
+      callAudio=1;
+  script.type = "text/javascript";
+
+  script.addEventListener("load", function (event) {
+    const config = {
+      name: "Demo User",
+      meetingId: "milkyway",
+      apiKey: "d5b28e3e-2fe8-4a60-948b-088c8dc31f6f",
+
+      containerId: null,
+      redirectOnLeave: "http://192.168.36.202:5500/videocalling/admin.html",
+      micEnabled: true,
+      webcamEnabled: true,
+      participantCanToggleSelfWebcam: true,
+      participantCanToggleSelfMic: true,
+
+      chatEnabled: true,
+      screenShareEnabled: true,
+
+      /*
+
+     Other Feature Properties
+      
+      */
+    };
+
+    const meeting = new VideoSDKMeeting();
+    meeting.init(config);
+  });
+
+  script.src =
+    "https://sdk.videosdk.live/rtc-js-prebuilt/0.3.23/rtc-js-prebuilt.js";
+  document.getElementsByTagName("head")[0].appendChild(script);
+    }
+  </script>
+</html>

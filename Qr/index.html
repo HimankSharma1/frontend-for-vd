@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+ 
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport"
+         content="width=device-width,
+                        initial-scale=1.0" />
+    <title>Paytm Gateway</title>
+    
+    <style>
+        h1, h3 {
+          color: rgb(0, 77, 112);
+        }
+        body, header {
+          display: flex;
+          flex-direction: column;
+          justify-content: center;
+          align-items: center;
+        }
+    </style>
+    <script src=
+"https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js">
+    </script>
+</head>
+ <style>
+    body{
+        background-color: rgb(58, 54, 54);
+    }
+ </style>
+<body>
+    <header>
+        <h1>Please Scan the QrCode for Payment</h1>
+        <h1> ₹100</h1>
+        <h3>QR code generator using qrcode.js</h3>
+        <h3>To visit geeksforgeeks.org scan below code</h3>
+    </header>
+    <main>
+        <div id="qrcode"></div>
+    </main>
+     
+    <script>
+        var qrcode = new QRCode("qrcode",
+        "http://192.168.36.202:5500/payment-gateway/index.html");
+    </script>
+    
+</body>
+ 
+</html>

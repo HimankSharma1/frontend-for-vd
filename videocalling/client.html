@@ -1,0 +1,103 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <script>
+        function call(){
+            url='https://himank.pythonanywhere.com/call/1'
+            fetch(url)
+            .then(response => {
+              if (!response.ok) {
+                throw new Error('HTTP error, status = ' + response.status);
+              }
+              return response.json();
+            })
+          .then(data => {
+              console.log(data);
+              // do something with the data here
+            })
+            .catch(error => {
+              console.log(error);
+            });
+            console.log("bhagg")
+        }
+
+
+        
+        var i = 1; //  set your counter to 1
+    function pollforcall() {
+      url = "https://himank.pythonanywhere.com/call/isCallOnline";
+      fetch(url)
+        .then((response) => {
+          if (!response.ok) {
+            throw new Error("HTTP error, status = " + response.status);
+          }
+          return response.json();
+        })
+        .then((data) => {
+          if(data==1){
+            document.querySelector("body").innerHTML = "";
+            start_call();
+          }
+          else if(data==0){
+              myLoop();
+
+          }
+        })
+        .catch((error) => {
+          console.log(error);
+        });
+    }
+    function myLoop() {
+      setTimeout(function () {
+        pollforcall();
+        // i++;
+      }, 1000);
+    }
+    myLoop();
+
+    function start_call() {
+      var script = document.createElement("script");
+  script.type = "text/javascript";
+
+  script.addEventListener("load", function (event) {
+    const config = {
+      name: "Demo User",
+      meetingId: "milkyway",
+      apiKey: "d5b28e3e-2fe8-4a60-948b-088c8dc31f6f",
+
+      containerId: null,
+      redirectOnLeave: "http://192.168.36.202:5500/videocalling/reditectonleave.html",
+      micEnabled: true,
+      webcamEnabled: true,
+      participantCanToggleSelfWebcam: true,
+      participantCanToggleSelfMic: true,
+
+      chatEnabled: true,
+      screenShareEnabled: true,
+
+      /*
+
+     Other Feature Properties
+      
+      */
+    };
+
+    const meeting = new VideoSDKMeeting();
+    meeting.init(config);
+  });
+
+  script.src =
+    "https://sdk.videosdk.live/rtc-js-prebuilt/0.3.23/rtc-js-prebuilt.js";
+  document.getElementsByTagName("head")[0].appendChild(script);
+    }
+
+    call()
+      </script>
+</head>
+<body>
+    <!-- waiting for doctor to pick up your call <br>
+    sit tight
+    <button onclick="call()"> call </button> -->
+</body>
+</html>
