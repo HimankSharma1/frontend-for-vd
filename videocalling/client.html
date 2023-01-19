@@ -1,8 +1,22 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <script>
+      url='https://himank.pythonanywhere.com/pay/changestate/0' 
+        fetch(url)
+        .then(response => {
+          if (!response.ok) {
+            throw new Error('HTTP error, status = ' + response.status);
+          }
+          return response.json();
+        })
+        .then(data => {
+          console.log(data);
+          // do something with the data here
+        })
+        .catch(error => {
+          console.log(error);
+        });
         function call(){
             url='https://himank.pythonanywhere.com/call/1'
             fetch(url)
@@ -21,9 +35,6 @@
             });
             console.log("bhagg")
         }
-
-
-        
         var i = 1; //  set your counter to 1
     function pollforcall() {
       url = "https://himank.pythonanywhere.com/call/isCallOnline";
@@ -67,7 +78,7 @@
       apiKey: "d5b28e3e-2fe8-4a60-948b-088c8dc31f6f",
 
       containerId: null,
-      redirectOnLeave: "http://192.168.36.202:5500/videocalling/reditectonleave.html",
+      redirectOnLeave: "../videocalling/reditectonleave.html",
       micEnabled: true,
       webcamEnabled: true,
       participantCanToggleSelfWebcam: true,
@@ -96,8 +107,6 @@
       </script>
 </head>
 <body>
-    <!-- waiting for doctor to pick up your call <br>
-    sit tight
-    <button onclick="call()"> call </button> -->
+
 </body>
 </html>

@@ -7,6 +7,25 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>paytm-gateway</title>
     <link rel="stylesheet" href="styleh.css">
+    <script>
+        function payConfirm() {
+            url = 'https://himank.pythonanywhere.com/pay/changestate/1'
+            fetch(url)
+                .then(response => {
+                    if (!response.ok) {
+                        throw new Error('HTTP error, status = ' + response.status);
+                    }
+                    return response.json();
+                })
+                .then(data => {
+                    console.log(data);
+                    // do something with the data here
+                })
+                .catch(error => {
+                    console.log(error);
+                });
+        }
+    </script>
 </head>
 
 <body>
@@ -16,12 +35,6 @@
     <p style="grid-area: elem3;">Bank name: State Bank of Gorilla (SBG)</p>
     <p id="rupee_amount" style="grid-area: elem4;margin-top: 2rem; margin-bottom: rem;">₹ 50</p>
     <div style="grid-area: elem5; margin-bottom: 10rem;" id="add-a-note">add a note</div>
-
-
-
-
-
-
     <div id="bottom_box">
         <p>CHOOSE ACCOUNT TO PAY WITH</p>
         <div id="bank_box"><img id="bank_image" src="doctor.png" alt="">
@@ -31,7 +44,7 @@
             </div>
 
         </div>
-        <button>pay ₹50</button>
+        <button onclick="payConfirm()">pay ₹50</button>
     </div>
 
 </html>

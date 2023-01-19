@@ -33,9 +33,39 @@
       var qrcode = new QRCode(
         "qrcode",
         "https://virdoc.netlify.app/payment-gateway/index.html"
+        // "http://192.168.0.119:5500/payment-gateway/index.html"
       );
       var audio=new Audio('../Qr/pay.mp3');
       audio.play()
+      
+      function pollforpay(){
+        url = "https://himank.pythonanywhere.com/pay/state";
+      fetch(url)
+        .then((response) => {
+          if (!response.ok) {
+            throw new Error("HTTP error, status = " + response.status);
+          }
+          return response.json();
+        })
+        .then((data) => {
+          if (data == 1) {
+            window.location.href="https://virdoc.netlify.app/videocalling/client.html";
+          }
+          // do something with the data here
+        })
+        .catch((error) => {
+          console.log(error);
+        });
+    }
+    function myLoop() {
+      setTimeout(function () {
+        pollforpay();
+        // i++;
+        myLoop();
+      }, 1000);
+    }
+    myLoop()
+
     </script>
   </body>
 </html>
