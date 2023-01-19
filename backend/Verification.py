@@ -41,8 +41,7 @@ def otp(n):
 @app.route("/call/<string:n>")
 def call(n):
     global ringing
-    if (int(n)==1):
-        ringing=1
+    ringing=n
  
 
 @app.route("/call/state")
