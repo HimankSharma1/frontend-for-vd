@@ -16,12 +16,16 @@
     <section id="buttons" style="grid-area: buttons;">
         <button>Measure body Temperature, SpO2 and Pulse</button>
         <button>Consult a virtual doctor</button>
-        <button onclick="window.location.href='../videocalling/client.html'">Contact a doctor (includes charges ₹50)</button>
+        <button onclick="callpage()">Contact a doctor (includes charges ₹50)</button>
     </section>
 
 </section>
 </body>
 <script>
+    function callpage(){
+        
+        window.location.href='../Qr/index.html';
+    }
     var audio = new Audio('measure.mp3');
 audio.play();
 </script>

@@ -53,15 +53,16 @@ if (focus_otp==1){
 }
 
 function sendphone_num(){
-  url='https://himank.pythonanywhere.com/phoneno/number/'+phone_no
-  fetch(url)
-  .then(response => {
-    if (!response.ok) {
-      throw new Error('HTTP error, status = ' + response.status);
-    }
-    return response.json();
-  })
-  .then(data => {
+  // url='https://himank.pythonanywhere.com/phoneno/number/'+phone_no
+  // fetch(url)
+  // .then(response => {
+  //   if (!response.ok) {
+  //     throw new Error('HTTP error, status = ' + response.status);
+  //   }
+  //   return response.json();
+  // })
+  // .then(data => {
+    data=1;
     if(data==1){
       audio = new Audio('otp.mp3');
       audio.play();
@@ -73,11 +74,11 @@ function sendphone_num(){
       audio.play();
       document.getElementById("numberinput").style.color = "red";
     }
-    // do something with the data here
-  })
-  .catch(error => {
-    console.log(error);
-  });
+  //   // do something with the data here
+  // })
+  // .catch(error => {
+  //   console.log(error);
+  // });
 
 
 }
@@ -98,19 +99,20 @@ function play_animation(){
   document.querySelector("numberbutton").disabled=true
 }
 function send_otp(){
-  url='https://himank.pythonanywhere.com/phoneno/otp/'+ otp
-  fetch(url)
-  .then(response => {
-    if (!response.ok) {
-      throw new Error('HTTP error, status = ' + response.status);
-    }
-    return response.json();
-  })
-  .then(data => {
+  // url='https://himank.pythonanywhere.com/phoneno/otp/'+ otp
+  // fetch(url)
+  // .then(response => {
+  //   if (!response.ok) {
+  //     throw new Error('HTTP error, status = ' + response.status);
+  //   }
+  //   return response.json();
+  // })
+  // .then(data => {
+    data=1
     if(data==1){
       // audio = new Audio('otp.mp3');
       // audio.play();
-      window.location.replace("../step2/index.html");
+      ;window.location.href='../step2/index.html'
     }
     else{
       audio = new Audio('wrong_otp.m4a');
@@ -118,12 +120,12 @@ function send_otp(){
       play_animation()
       document.getElementById("otpinput").style.color = "red";
     }
-  })
-  .catch(error => {
-    console.log(error);
-  });
-    // audio = new Audio('otp.mp3');
-    // audio.play();
+  // })
+  // .catch(error => {
+  //   console.log(error);
+  // });
+  //   // audio = new Audio('otp.mp3');
+  //   // audio.play();
 
  focus_otp=1;
  focus_phone=0;

@@ -1,49 +1,41 @@
 <!DOCTYPE html>
 <html lang="en">
- 
-<head>
+  <head>
     <meta charset="UTF-8" />
-    <meta name="viewport"
-         content="width=device-width,
-                        initial-scale=1.0" />
-    <title>Paytm Gateway</title>
-    
-    <style>
-        h1, h3 {
-          color: rgb(0, 77, 112);
-        }
-        body, header {
-          display: flex;
-          flex-direction: column;
-          justify-content: center;
-          align-items: center;
-        }
-    </style>
-    <script src=
-"https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js">
-    </script>
-</head>
- <style>
-    body{
-        background-color: rgb(58, 54, 54);
-    }
- </style>
-<body>
-    <header>
-        <h1>Please Scan the QrCode for Payment</h1>
-        <h1> ₹100</h1>
-        <h3>QR code generator using qrcode.js</h3>
-        <h3>To visit geeksforgeeks.org scan below code</h3>
-    </header>
-    <main>
-        <div id="qrcode"></div>
-    </main>
-     
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+  </head>
+  <body>
+    <div id="left" class="box">
+      <div id="qrcode"></div>
+
+      <div id="bottombox">
+        <img src="gpay.png" alt="" id="image1" class="images" />
+        <img src="paytm.png" alt="" id="image2" class="images" />
+        <img src="upi.png" alt="" id="image3" class="images" />
+        <img src="phonepe.png" alt="" id="image4" class="images" />
+      </div>
+    </div>
+
+    <div id="right" class="box">
+        <p id="heading">Scan The QR for Payment</p>
+        <p id="name">Virtual Doctor</p>
+        <img src="../step2/doctor.png" alt="" id="doc">
+        <p class="details">Banking Name: Mr.Goilla Singh </p>
+        <p class="details">Bank Name: State Bank Of Gorilla(SBG) </p>
+        <p id="amount"><strong>₹50</strong></p>
+    </div>
+
     <script>
-        var qrcode = new QRCode("qrcode",
-        "http://192.168.36.202:5500/payment-gateway/index.html");
+      var qrcode = new QRCode(
+        "qrcode",
+        "../payment-gateway/index.html"
+      );
+      var audio=new Audio('../Qr/pay.mp3');
+      audio.play()
     </script>
-    
-</body>
- 
+  </body>
 </html>
