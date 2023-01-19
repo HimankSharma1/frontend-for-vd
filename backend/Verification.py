@@ -29,6 +29,7 @@ def message(n):
         
 ringing=0
 isCallActive=0
+pay=0
 
 @app.route("/phoneno/otp/<string:n>")
 def otp(n):
@@ -42,10 +43,7 @@ def call(n):
     global ringing
     if (int(n)==1):
         ringing=1
-        return flask.jsonify("active!")
-    elif (int(n)==0):
-        ringing=0
-        return flask.jsonify("call ended!")
+ 
 
 @app.route("/call/state")
 def callstate():
@@ -62,6 +60,17 @@ def callOngoing(n):
 def isCallOnline():
     global isCallActive
     return flask.jsonify(isCallActive)
+
+
+@app.route("/pay/state")
+def paystate():
+    global pay
+    return flask.jsonify(pay)
+
+@app.route("/pay/changestate/<string:n>")
+def changestate(n):
+    global pay
+    pay=n
 
 
 if __name__=="__main__":
