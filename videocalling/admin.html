@@ -46,7 +46,6 @@ function changecallstateto(){
               console.log(error);
             });
 }
-    var callAudio = 0;
     var i = 1; //  set your counter to 1
     function pollforcall() {
       url = "https://himank.pythonanywhere.com/call/state";
@@ -65,9 +64,7 @@ function changecallstateto(){
            else if (data == 1) {
             if(i<12){
               i++;
-              if (callAudio==0){
               audio.play()
-              }
               document.querySelector("p").innerHTML = "incoming call";
             }
             else{
