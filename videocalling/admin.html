@@ -7,8 +7,9 @@
     <title>Document</title>
   </head>
   <body> <p></p><button onclick="pickupcall()">accept</button></body>
-
+  
   <script>
+    changecallstateto()
     var audio = new Audio('incomming_call.mp3');
     function pickupcall(){
       url='https://himank.pythonanywhere.com/call/Call_ongoing/1'
@@ -69,7 +70,6 @@ function changecallstateto(){
             }
             else{
               changecallstateto(0)
-              callAudio=0
             document.querySelector("p").innerHTML = "waiting for a call";
             }
           }
@@ -90,7 +90,6 @@ function changecallstateto(){
     myLoop();
 
     function start_call() {
-      changecallstateto()
       var script = document.createElement("script");
   script.type = "text/javascript";
 
