@@ -1,0 +1,112 @@
+body{
+    background-color: rgb(198, 145, 202);
+    display: flex;
+    flex-direction: column;
+    /* justify-content: center; */
+    align-items: center;
+
+}
+
+
+.box{
+     /* background-color: aliceblue; */
+     height: 45rem ;
+     width: 35% ;
+}
+.main{
+    display: flex;
+    border-radius: 0.8rem;
+    margin: 0.2rem;
+    background-color: rgb(39, 39, 39);
+}
+
+#head{
+    height: 12rem ;
+    width: 100% ;
+    display: flex;
+    /* justify-content; */
+    align-items:center;
+    font-size: min(5vw,3.1rem) ;
+    margin-left: auto;
+    margin-right: auto;
+    font-weight: 200;
+}
+#body{
+    display: flex;
+    justify-content:space-between;
+    align-items: center;
+    height: 50rem ;
+    width: 100% ;
+}
+#text{
+    height: 5rem ;
+    width: 80% ;
+    margin-left: 0%;
+    background-color: #dff7e5;
+}
+#back{
+    width: 10%;
+    display: flex;
+    align-items: center;
+}
+a{
+  display: flex;
+  text-decoration: none;
+  margin-left: 0.6rem;
+  margin-bottom: 7rem;
+  font-size: 2rem;
+  width: 5rem;
+  border: 1px solid white;
+  text-align: center;
+  color:black;
+  border-radius: 30px;
+  background-color: #dff7e5;
+  height: 3rem;
+  align-items:center;
+  justify-content: center;
+}
+
+#center{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    /* background-color: aqua; */
+    /* width: %; */
+}
+
+img{
+    height: 90%;
+    border-radius: 50%;
+}
+#left{
+    display: flex;
+    flex-direction: column;
+    justify-content:space-between;
+    align-items:flex-start;
+    margin-left: 5%;
+}
+
+#right{
+    display: flex;
+    flex-direction: column;
+    justify-content:space-between;
+    align-items:flex-start;
+    margin-left: 5%;
+}
+button{
+display: flex;
+  /* margin-left: 0.6rem; */
+  /* margin-bottom: 7rem; */
+  font-size: 2rem;
+  width:80%;
+  border: 1px solid white;
+  text-align: center;
+  color:black;
+  border-radius: 30px;
+  background-color: #dff7e5;
+  height: 5rem;
+  align-items:center;
+  justify-content: center;
+}
+
+

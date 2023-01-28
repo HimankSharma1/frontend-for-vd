@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Virtual Doctor</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Quicksand:wght@700&display=swap"
+      rel="stylesheet"
+    />
+    
+</head>
+<body>
+    <div class="main" id="head">
+        <div id="back">
+            <a href="../step2/index.html">Back</a>
+        </div>
+        <div id="text">
+
+        </div>
+    </div>
+    
+    <div class="main" id="body">
+        <div class="box" id="left">
+            <button id="cough" onclick="dis1()">Cough</button>
+            <button onclick="dis2()">Head ace</button>
+            <button onclick="dis3()">Body Pain</button>
+            <button onclick="dis4()">Stomach Pain</button>
+            <button onclick="dis5()">Cold</button>
+        </div>
+        <div class="box" id="center">
+            <img id="virdoc" src="../payment-gateway/doctor.png" alt="">
+        </div>
+        <div class="box" id="right">
+
+            <button onclick="dis1()">Cough</button>
+            <button onclick="dis2()">Head ace</button>
+            <button onclick="dis3()">Body Pain</button>
+            <button onclick="dis4()">Stomach Pain</button>
+            <button onclick="dis5()">Cold</button>
+        </div>
+    </div>
+    
+</body>
+<script>
+    function docpage(){
+        window.location.href='../virtual_program/index.html';
+    }
+    function callpage(){
+        window.location.href='../Qr/index.html';
+    }
+    function dis1close(){
+    }
+    function dis1(){
+        url="https://blr1.blynk.cloud/external/api/update?token=urtepnRcq94VQjS5YXEC3AowJb6VLMBx&V12=1";
+        fetch(url);
+        setTimeout(function() {
+            url="https://blr1.blynk.cloud/external/api/update?token=urtepnRcq94VQjS5YXEC3AowJb6VLMBx&V12=0";
+            fetch(url)
+        }, 4000);
+        document.querySelector("#cough").innerHTML = "opened";
+
+    }
+    var audio = new Audio('measure.mp3');
+</script>
+</html>
