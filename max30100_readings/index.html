@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sensor Data</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+        <div id="left" class="box">    
+            <h1>Pulse Rate</h1>
+            <p id="heart"></p>
+        </div>
+        <div id="right" class="box">
+            <h1>SpO2 Level</h1>
+            <p id="Spo2"></p>
+        </div>
+</body>
+<script>
+  function maxreading() {
+      url = "https://blr1.blynk.cloud/external/api/get?token=urtepnRcq94VQjS5YXEC3AowJb6VLMBx&V7";
+      fetch(url)
+        .then((response) => {
+          if (!response.ok) {
+            throw new Error("HTTP error, status = " + response.status);
+          }
+          return response.json();
+        })
+        .then((data) => {
+          document.querySelector("#heart").innerHTML = data;
+        })
+        .catch((error) => {
+          console.log(error);
+        });
+    }
+      url = "https://blr1.blynk.cloud/external/api/get?token=urtepnRcq94VQjS5YXEC3AowJb6VLMBx&V8";
+      fetch(url)
+        .then((response) => {
+          if (!response.ok) {
+            throw new Error("HTTP error, status = " + response.status);
+          }
+          return response.json();
+        })
+        .then((data) => {
+          document.querySelector("#Spo2").innerHTML = data;
+        })
+        .catch((error) => {
+          console.log(error);
+        });
+        
+    function myLoop() {
+        maxreading();
+        myLoop();
+      }
+
+
+    myLoop();
+
+</script>
+</html>
