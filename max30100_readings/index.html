@@ -18,6 +18,9 @@
         </div>
 </body>
 <script>
+  var i=1;
+  url="https://blr1.blynk.cloud/external/api/update?token=urtepnRcq94VQjS5YXEC3AowJb6VLMBx&V9=1";
+  fetch(url);
   function maxreading() {
       url = "https://blr1.blynk.cloud/external/api/get?token=urtepnRcq94VQjS5YXEC3AowJb6VLMBx&V7";
       fetch(url)
@@ -33,9 +36,8 @@
         .catch((error) => {
           console.log(error);
         });
-    }
-      url = "https://blr1.blynk.cloud/external/api/get?token=urtepnRcq94VQjS5YXEC3AowJb6VLMBx&V8";
-      fetch(url)
+        url = "https://blr1.blynk.cloud/external/api/get?token=urtepnRcq94VQjS5YXEC3AowJb6VLMBx&V8";
+        fetch(url)
         .then((response) => {
           if (!response.ok) {
             throw new Error("HTTP error, status = " + response.status);
@@ -48,14 +50,17 @@
         .catch((error) => {
           console.log(error);
         });
-        
-    function myLoop() {
-        maxreading();
-        myLoop();
       }
+      function myLoop() {
 
+      setTimeout(function () {
+        maxreading();
+        i++;
+        myLoop();
+      }, 500);
+    }
 
     myLoop();
-
+    
 </script>
 </html>

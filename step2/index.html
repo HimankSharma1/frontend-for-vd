@@ -14,7 +14,7 @@
     <section id="heading_and_image">
     <img src="doctor.png" alt="" style="grid-area: image;">
     <section id="buttons" style="grid-area: buttons;">
-        <button>Measure body Temperature, SpO2 and Pulse</button>
+        <button onclick="read()">Measure body Temperature, SpO2 and Pulse</button>
         <button onclick="docpage()">Consult a virtual doctor</button>
         <button onclick="callpage()">Contact a doctor (includes charges ₹50)</button>
     </section>
@@ -22,6 +22,9 @@
 </section>
 </body>
 <script>
+    function read(){
+        window.location.href="../max30100_readings/index.html";
+    }
     function docpage(){
         window.location.href='../age_entry/index.html';
     }
